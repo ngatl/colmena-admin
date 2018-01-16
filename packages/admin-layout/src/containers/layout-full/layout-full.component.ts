@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core'
           <router-outlet></router-outlet>
         </div><!-- /.conainer-fluid -->
       </main>
-      <app-aside></app-aside>
+      <!--<app-aside></app-aside>-->
     </div>
     <app-footer></app-footer>
   `,

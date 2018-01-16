@@ -10,13 +10,13 @@ import { DashboardService } from '../dashboard.service'
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <img *ngIf="item" [src]="item.avatar"
+          <img *ngIf="item" [src]="item?.avatar"
                class="img-fluid rounded float-left mb-2" width="200px"/>
         </div>
         <div class="col-md-8">
-          <h3>{{ item.firstName }} {{ item.lastName }}</h3>
+          <h3>{{ item?.firstName }} {{ item?.lastName }}</h3>
           <hr/>
-          <span class="float-right lead">{{ item.email }}</span>
+          <span class="float-right lead">{{ item?.email }}</span>
         </div>
         <div class="col-md-12">
           <ui-form *ngIf="item" [config]="config" [item]="item" (action)="handleAction($event)"></ui-form>

@@ -55,8 +55,8 @@ const directives = [AsideToggleDirective, NAV_DROPDOWN_DIRECTIVES, ReplaceDirect
 @NgModule({
   imports: [
     ...modules,
-    // StoreModule.forFeature('layout', layoutReducer, { initialState: layoutInitialState }),
-    // EffectsModule.forFeature([LayoutEffects]),
+    StoreModule.forFeature('layout', layoutReducer, { initialState: layoutInitialState }),
+    EffectsModule.forFeature([LayoutEffects]),
   ],
   declarations: [...components, ...containers, ...directives],
   exports: [...containers],
