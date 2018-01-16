@@ -69,6 +69,12 @@
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
+    },
+    {
+      "name": "../packages/admin-lb-sdk",
+      "root": "packages/admin-lb-sdk/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     }
   ]
 }
