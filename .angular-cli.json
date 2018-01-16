@@ -38,12 +38,18 @@
     {
       "name": "../modules/admin/content",
       "root": "libs/../modules/admin/content/src",
-      "test": "../../../../../../test.js",
+      "test": "../../../test.js",
       "appRoot": ""
     },
     {
       "name": "../modules/admin/dashboard",
       "root": "modules/admin/dashboard/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "../modules/admin/system",
+      "root": "modules/admin/system/src",
       "test": "../../../test.js",
       "appRoot": ""
     },

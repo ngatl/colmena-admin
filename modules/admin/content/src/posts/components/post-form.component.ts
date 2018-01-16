@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { UiService } from '../../../../packages/admin-ui'
+import { UiService } from '../../../../../../packages/admin-ui'
 
 import { ContentPost, PostsService } from '../posts.service'
 

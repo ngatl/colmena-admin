@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { ContentPage, SystemDomainApi } from '../../../../packages/admin-lb-sdk'
-export { ContentPage } from '../../../../packages/admin-lb-sdk'
-import { UiDataGridService, FormService } from '@colmena/admin-ui'
+import { ContentPage, SystemDomainApi } from '../../../../../packages/admin-lb-sdk'
+export { ContentPage } from '../../../../../packages/admin-lb-sdk'
+import { UiDataGridService, FormService } from '../../../../../packages/admin-ui'
 import { Observable } from 'rxjs/Observable'
 import { Subscription } from 'rxjs/Subscription'
 

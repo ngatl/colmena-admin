@@ -6,7 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
 import { RouterComponent } from './components/router/router.component'
 
 const routeConfig: ExtraOptions = {
-  enableTracing: false,
+  enableTracing: true,
   initialNavigation: 'enabled',
   useHash: true,
 }

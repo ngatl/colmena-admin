@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
-import { AdminUiModule } from '@colmena/admin-ui'
 import { SDKBrowserModule } from '../../../../../packages/admin-lb-sdk/src'
+import { AdminUiModule } from '../../../../../packages/admin-ui/src'
 
 import { PagesRoutingModule } from './pages-routing.module'
 

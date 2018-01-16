@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
-import { UiService } from '../../../../packages/admin-ui'
+import { UiService } from '../../../../../../packages/admin-ui'
 
 import { EventsService } from '../events.service'
 

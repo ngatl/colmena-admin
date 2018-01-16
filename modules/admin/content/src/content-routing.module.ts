@@ -13,7 +13,7 @@ export const routes: Routes = [
       title: 'Content',
     },
     // canActivate: [HasContentAccess],
-    // resolve: { domain: DomainResolver },
+    resolve: { domain: DomainResolver },
     children: [
       {
         path: '',

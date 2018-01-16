@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { SDKBrowserModule } from '../../../../../packages/admin-lb-sdk/src'
-import { AdminUiModule } from '../../../../packages/admin-ui'
+import { AdminUiModule } from '../../../../../packages/admin-ui'
 
 import { EventsRoutingModule } from './events-routing.module'
 

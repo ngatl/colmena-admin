@@ -13,4 +13,24 @@ export const navigation = [
     url: '/content',
     icon: 'icon-speedometer',
   },
+  {
+    name: 'Events',
+    url: '/content/events',
+    icon: 'icon-speedometer',
+  },
+  {
+    name: 'Pages',
+    url: '/content/pages',
+    icon: 'icon-speedometer',
+  },
+  {
+    name: 'Posts',
+    url: '/content/posts',
+    icon: 'icon-speedometer',
+  },
+  {
+    name: 'Products',
+    url: '/content/products',
+    icon: 'icon-speedometer',
+  },
 ]

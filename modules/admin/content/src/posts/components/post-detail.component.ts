@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 
-import { UiTabLink } from '../../../../packages/admin-ui'
+import { UiTabLink } from '../../../../../../packages/admin-ui'
 
 import { PostsService } from '../posts.service'
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { ContentProduct, SystemDomainApi } from '../../../../../../packages/admin-lb-sdk'
-export { ContentProduct } from '../../../../../../packages/admin-lb-sdk'
+import { ContentProduct, SystemDomainApi } from '../../../../../packages/admin-lb-sdk'
+export { ContentProduct } from '../../../../../packages/admin-lb-sdk'
 import { UiDataGridService, FormService } from '../../../../../packages/admin-ui'
 import { Observable } from 'rxjs/Observable'
 import { Subscription } from 'rxjs/Subscription'
