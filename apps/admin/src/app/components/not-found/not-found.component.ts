@@ -8,7 +8,5 @@ import { Component, OnInit } from '@angular/core'
 export class NotFoundComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-    console.log('NotFoundComponent init')
-  }
+  ngOnInit() {}
 }

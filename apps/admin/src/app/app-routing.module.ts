@@ -6,7 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
 import { RouterComponent } from './components/router/router.component'
 
 const routeConfig: ExtraOptions = {
-  enableTracing: true,
+  enableTracing: false,
   initialNavigation: 'enabled',
   useHash: true,
 }
@@ -17,7 +17,7 @@ const routes: Routes = [
     path: '',
     component: LayoutSimpleComponent,
     children: [
-      // { path: '', loadChildren: '@colmena/module-admin-auth#AuthModule' },
+      { path: '', loadChildren: '../../../../modules/admin/auth/src/auth.module#AuthModule' },
       { path: 'router', component: RouterComponent },
       { path: 'not-found', component: NotFoundComponent },
     ],

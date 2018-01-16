@@ -1,1 +1,1 @@
-export { AdminLbSdkModule } from './src/admin-lb-sdk.module';
+export * from './src/';

@@ -1,1 +1,1 @@
-export { AdminUiModule } from './src/admin-ui.module';
+export * from './src'

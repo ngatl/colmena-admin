@@ -30,3 +30,17 @@ $navbar-brand-logo-size: 130px auto;
   background: $navbar-brand-logo no-repeat center center;
   background-size: 200px auto;
 }
+
+hr.transparent {
+  border-top: 1px solid transparent;
+}
+
+.d-table {
+  display: table;
+}
+
+.d-100vh-va-middle {
+  display: table-cell;
+  height: 100vh;
+  vertical-align: middle;
+}

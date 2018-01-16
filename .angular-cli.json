@@ -30,6 +30,12 @@
       }
     },
     {
+      "name": "../modules/admin/auth",
+      "root": "modules/admin/auth/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "../packages/admin-layout",
       "appRoot": "",
       "root": "packages/admin-layout/src",
