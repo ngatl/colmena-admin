@@ -18,7 +18,7 @@ export interface UnsafeAction extends Action {
 
 export interface State {
   app: fromApp.State
-  auth: fromAuth.AuthState;
+  auth: fromAuth.AuthState
   // layout: fromLayout.State;
 }
 

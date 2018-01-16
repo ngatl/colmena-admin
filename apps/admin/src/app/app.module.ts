@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { NxModule } from '@nrwl/nx'
 import { AuthModule } from '../../../../modules/admin/auth/src'
+import { DashboardModule } from '../../../../modules/admin/dashboard/src'
 
 import { AdminLayoutModule } from '../../../../packages/admin-layout'
 import { LoopBackConfig } from '../../../../packages/admin-lb-sdk'
@@ -25,10 +26,11 @@ import { AppEffects, reducers, reducersConfig } from './state'
     NxModule.forRoot(),
     adminRoutes,
     StoreModule.forRoot(reducers, reducersConfig),
-    ! environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([ AppEffects ]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects]),
     AdminLayoutModule,
-    AuthModule,
+    // AuthModule,
+    // DashboardModule,
     AdminUiModule.forRoot(),
   ],
   declarations: [AppComponent, NotFoundComponent, RouterComponent],

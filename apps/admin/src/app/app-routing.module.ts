@@ -29,7 +29,7 @@ const routes: Routes = [
       // { path: '', loadChildren: './extensions-routing.module#ExtensionsRoutingModule' },
       // { path: 'content', loadChildren: '@colmena/module-admin-content#ContentModule' },
       // { path: 'core', loadChildren: '@colmena/module-admin-core#CoreModule' },
-      // { path: 'dashboard', loadChildren: '@colmena/module-admin-dashboard#DashboardModule' },
+      { path: 'dashboard', loadChildren: '../../../../modules/admin/dashboard/src/dashboard.module#DashboardModule' },
       // { path: 'browser', loadChildren: '@colmena/module-admin-data-browser#DataBrowserModule' },
       // { path: 'development', loadChildren: '@colmena/module-admin-dev#DevModule' },
       // { path: 'storage', loadChildren: '@colmena/module-admin-storage#StorageModule' },

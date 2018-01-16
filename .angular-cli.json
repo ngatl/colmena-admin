@@ -36,6 +36,12 @@
       "appRoot": ""
     },
     {
+      "name": "../modules/admin/dashboard",
+      "root": "modules/admin/dashboard/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "../packages/admin-layout",
       "appRoot": "",
       "root": "packages/admin-layout/src",
