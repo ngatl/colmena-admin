@@ -8,5 +8,5 @@ export const environment = {
   api: {
     baseUrl: 'http://localhost:3000',
     version: '/api/v1',
-  }
+  },
 }

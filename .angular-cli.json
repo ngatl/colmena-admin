@@ -1,10 +1,53 @@
 {
   "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
-    "name": "colmena-admin",
-    "npmScope": "colmena-admin",
-    "latestMigration": "20180103-update-command-line-scripts"
+    "name": "colmena-admin"
   },
+  "apps": [
+    {
+      "name": "admin",
+      "root": "apps/admin/src",
+      "outDir": "dist/apps/admin",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.scss"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "../packages/admin-layout",
+      "appRoot": "",
+      "root": "packages/admin-layout/src",
+      "test": "../../../test.js"
+    },
+    {
+      "name": "../packages/admin-lb-sdk",
+      "appRoot": "",
+      "root": "packages/admin-lb-sdk/src",
+      "test": "../../../test.js"
+    },
+    {
+      "name": "../packages/admin-ui",
+      "root": "packages/admin-ui/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    }
+  ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
@@ -30,51 +73,21 @@
     }
   },
   "defaults": {
+    "styleExt": "scss",
+    "component": {
+      "inlineStyle": true,
+      "inlineTemplate": true
+    },
     "schematics": {
       "collection": "@nrwl/schematics",
-      "postGenerate": "npm run format",
       "newProject": [
         "app",
         "lib"
-      ]
-    },
-    "styleExt": "css",
-    "component": {}
+      ],
+      "postGenerate": "npm run format"
+    }
   },
   "warnings": {
     "typescriptMismatch": false
-  },
-  "apps": [
-    {
-      "name": "admin",
-      "root": "apps/admin/src",
-      "outDir": "dist/apps/admin",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "../../../test.js",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "../../../tsconfig.spec.json",
-      "prefix": "app",
-      "styles": [
-        "styles.css"
-      ],
-      "scripts": [],
-      "environmentSource": "environments/environment.ts",
-      "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
-      }
-    },
-    {
-      "name": "../packages/admin-lb-sdk",
-      "root": "packages/admin-lb-sdk/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    }
-  ]
+  }
 }

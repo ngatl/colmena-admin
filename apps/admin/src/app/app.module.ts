@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core'
-import { ExtraOptions, RouterModule, Routes } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
+import { StoreModule } from '@ngrx/store'
 import { NxModule } from '@nrwl/nx'
 
+import { AdminLayoutModule } from '../../../../packages/admin-layout'
 import { LoopBackConfig } from '../../../../packages/admin-lb-sdk/src'
+import { AdminUiModule } from '../../../../packages/admin-ui/'
+
 import { environment } from '../environments/environment'
+import { adminRoutes } from './app-routing.module'
 import { AppComponent } from './app.component'
 
-const routeConfig: ExtraOptions = {
-  initialNavigation: 'enabled',
-}
-
-const routes: Routes = []
+import { NotFoundComponent } from './components/not-found/not-found.component'
+import { RouterComponent } from './components/router/router.component'
 
 @NgModule({
-  imports: [BrowserModule, NxModule.forRoot(), RouterModule.forRoot(routes, routeConfig)],
-  declarations: [AppComponent],
+  imports: [BrowserModule, NxModule.forRoot(), adminRoutes, StoreModule.forRoot({}), AdminLayoutModule, AdminUiModule.forRoot()],
+  declarations: [AppComponent, NotFoundComponent, RouterComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-
   static configureLoopBack() {
     const { version, baseUrl } = environment.api
     LoopBackConfig.setBaseURL(baseUrl)
@@ -30,5 +30,4 @@ export class AppModule {
   constructor() {
     AppModule.configureLoopBack()
   }
-
 }
