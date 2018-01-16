@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { NxModule } from '@nrwl/nx'
 import { AuthModule } from '../../../../modules/admin/auth/src'
+import { ContentModule } from '../../../../modules/admin/content/src/content.module'
 import { DashboardModule } from '../../../../modules/admin/dashboard/src'
 
 import { AdminLayoutModule } from '../../../../packages/admin-layout'
@@ -30,6 +31,7 @@ import { AppEffects, reducers, reducersConfig } from './state'
     EffectsModule.forRoot([AppEffects]),
     AdminLayoutModule,
     // AuthModule,
+    // ContentModule,
     // DashboardModule,
     AdminUiModule.forRoot(),
   ],

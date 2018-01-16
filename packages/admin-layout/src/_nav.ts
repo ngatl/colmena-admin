@@ -8,4 +8,9 @@ export const navigation = [
       text: 'NEW',
     },
   },
+  {
+    name: 'Content',
+    url: '/content',
+    icon: 'icon-speedometer',
+  },
 ]
