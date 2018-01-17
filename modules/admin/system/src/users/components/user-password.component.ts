@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { UiService, FormService } from '../../../../../packages/admin-ui'
+import { UiService, FormService } from '../../../../../../packages/admin-ui'
 import { UsersService } from '../users.service'
 
 @Component({

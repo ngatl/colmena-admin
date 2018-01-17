@@ -3,28 +3,27 @@ import { Store } from '@ngrx/store'
 
 const moduleName = 'system'
 
-const link = (...links) => ['/', moduleName, ...links]
-
 const moduleConfig = {
   name: 'System',
   icon: 'icon-settings',
   packageName: `@colmena/module-admin-${moduleName}`,
   topLinks: [
-    { weight: 110, label: 'Domains', icon: 'icon-globe', link: link('domains') },
-    { weight: 120, label: 'Settings', icon: 'icon-settings', link: link('settings') },
-    { weight: 130, label: 'Users', icon: 'icon-people', link: link('users') },
+    { weight: 110, name: 'Domains', icon: 'icon-globe', url: '/system/domains' },
+    { weight: 120, name: 'Settings', icon: 'icon-settings', url: '/system/settings' },
+    { weight: 130, name: 'Users', icon: 'icon-people', url: '/system/users' },
   ],
   sidebarLinks: [
-    { weight: 100, type: 'title', label: 'System' },
-    { weight: 110, label: 'Domains', icon: 'icon-globe', link: link('domains') },
-    { weight: 120, label: 'Settings', icon: 'icon-settings', link: link('settings') },
-    { weight: 130, label: 'Users', icon: 'icon-people', link: link('users') },
+    { weight: 100, name: 'System', icon: 'icon-equalizer', url: '/system', type: 'title', children: [
+      { weight: 110, name: 'Domains', icon: 'icon-globe', url: '/system/domains' },
+      { weight: 120, name: 'Settings', icon: 'icon-settings', url: '/system/settings' },
+      { weight: 130, name: 'Users', icon: 'icon-people', url: '/system/users' },
+    ] },
   ],
   dashboardLinks: {
     system: [
-      { count: '∞', label: 'Domains', type: 'info', icon: 'icon-globe', link: link('domains') },
-      { count: '∞', label: 'Settings', type: 'success', icon: 'icon-settings', link: link('settings') },
-      { count: '∞', label: 'Users', type: 'warning', icon: 'icon-people', link: link('users') },
+      { count: '∞', name: 'Domains', type: 'info', icon: 'icon-globe', url: '/system/domains' },
+      { count: '∞', name: 'Settings', type: 'success', icon: 'icon-settings', url: '/system/settings' },
+      { count: '∞', name: 'Users', type: 'warning', icon: 'icon-people', url: '/system/users' },
     ],
   },
 }

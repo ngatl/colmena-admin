@@ -1,7 +1,8 @@
 export interface Layout {
-  // define state here
+  headerNav: any[]
   footerLeft: string
   footerRight: string
+  sidebarNav: any[]
 }
 
 export interface LayoutState {

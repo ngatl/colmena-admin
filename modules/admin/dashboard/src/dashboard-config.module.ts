@@ -3,14 +3,12 @@ import { Store } from '@ngrx/store'
 
 const moduleName = 'dashboard'
 
-const link = (...links) => ['/', moduleName, ...links]
-
 const moduleConfig = {
   name: 'Dashboard',
   icon: 'icon-speedometer',
   packageName: `@colmena/module-admin-${moduleName}`,
-  topLinks: [{ weight: 0, label: 'Dashboard', icon: 'icon-speedometer', link: link() }],
-  sidebarLinks: [{ weight: 0, label: 'Dashboard', icon: 'icon-speedometer', link: link() }],
+  topLinks: [{ weight: 0, name: 'Dashboard', icon: 'icon-speedometer', url: '/dashboard' }],
+  sidebarLinks: [{ weight: 0, name: 'Dashboard', icon: 'icon-speedometer', url: '/dashboard' }],
   dashboardLinks: {},
 }
 

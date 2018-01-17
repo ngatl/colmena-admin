@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core'
         <ol class="breadcrumb">
           <app-breadcrumbs></app-breadcrumbs>
         </ol>
-        <div class="container-fluid">
+        <div class="container-fluid pb-5">
           <router-outlet></router-outlet>
         </div><!-- /.conainer-fluid -->
       </main>

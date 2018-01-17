@@ -1,1 +1,1 @@
-export * from './replace.directive'
+export * from './replace.directive';

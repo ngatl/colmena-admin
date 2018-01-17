@@ -1,5 +1,4 @@
-
-<div class="mb-2">
+<div class="m-4">
   <ui-data-grid-header
     (action)="gridAction($event)"
     [config]="config?.header"
@@ -7,7 +6,7 @@
     [limit]="limit">
   </ui-data-grid-header>
 </div>
-<div class="mt-1">
+<div class="my-5 mx-4">
   <ui-data-grid-rows
     (action)="gridAction($event)"
     [columns]="columns"
@@ -15,7 +14,7 @@
     [items]="items">
   </ui-data-grid-rows>
 </div>
-<div style="text-align: center" *ngIf="items?.length">
+<div class="m-4" style="text-align: center" *ngIf="items?.length">
   <ui-data-grid-pager
     (action)="gridAction($event)"
     [itemsPerPage]="limit"

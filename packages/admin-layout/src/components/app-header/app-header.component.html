@@ -3,10 +3,39 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler d-md-down-none mr-auto" type="button" appSidebarToggler>
+  <button class="navbar-toggler d-md-down-none" type="button" appSidebarToggler>
     <span class="navbar-toggler-icon"></span>
   </button>
-  <!--<button class="navbar-toggler d-md-down-none" type="button" appAsideMenuToggler>-->
-    <!--<span class="navbar-toggler-icon"></span>-->
-  <!--</button>-->
+  <ul class="nav navbar-nav d-md-down-none">
+    <li class="nav-item px-3" *ngFor="let nav of navigation" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="nav.url">
+        <i *ngIf="nav.icon" class="{{nav.icon}}"></i>
+        {{nav.name}}
+      </a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav ml-auto mr-2">
+    <!--<li class="nav-item d-md-down-none">-->
+      <!--<a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>-->
+    <!--</li>-->
+    <!--<li class="nav-item d-md-down-none">-->
+      <!--<a class="nav-link" href="#"><i class="icon-list"></i></a>-->
+    <!--</li>-->
+    <!--<li class="nav-item d-md-down-none">-->
+      <!--<a class="nav-link" href="#"><i class="icon-location-pin"></i></a>-->
+    <!--</li>-->
+    <li class="nav-item nav-dropdown-toggle dropdown" dropdown placement="bottom right" *ngIf="user">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+        <img [attr.src]="user.avatar" class="img-avatar" />
+        {{user.fullName}}
+        <i class="fa fa-chevron-down mx-2"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <a class="dropdown-item" routerLink="/dashboard/profile"><i class="fa fa-user"></i> Profile</a>
+        <a class="dropdown-item" routerLink="/dashboard/password"><i class="fa fa-lock"></i> Password</a>
+        <div class="divider"></div>
+        <a class="dropdown-item" routerLink="/logout"><i class="fa fa-lock"></i> Logout</a>
+      </div>
+    </li>
+  </ul>
 </header>

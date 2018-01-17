@@ -1,7 +1,5 @@
 import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core'
-
-// Import navigation elements
-import { navigation } from '../../_nav'
+import { Store } from '@ngrx/store'
 
 @Component({
   selector: 'app-sidebar-nav',
@@ -21,7 +19,7 @@ import { navigation } from '../../_nav'
     </nav>`,
 })
 export class AppSidebarNavComponent {
-  public navigation = navigation
+  public navigation = []
 
   public isDivider(item) {
     return item.divider ? true : false
@@ -31,7 +29,14 @@ export class AppSidebarNavComponent {
     return item.title ? true : false
   }
 
-  constructor() {}
+  constructor(private store: Store<any>) {
+    this.store.select('layout')
+      .subscribe((res: any) => {
+        const { sidebarNav } = res
+        Object.keys(sidebarNav)
+          .forEach(key => this.navigation.push(sidebarNav[key]))
+      })
+  }
 }
 
 import { Router } from '@angular/router'
@@ -106,7 +111,7 @@ export class AppSidebarNavLinkComponent {
   }
 
   public isExternalLink() {
-    return this.link.url.substring(0, 4) === 'http' ? true : false
+    return this.link.url && this.link.url.substring(0, 4) === 'http' ? true : false
   }
 
   public isIcon() {

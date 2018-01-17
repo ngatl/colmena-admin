@@ -6,14 +6,14 @@ import * as auth from '../../state/auth.actions'
 @Component({
   template: `
     <ui-message>
-      <div class="input-group mb-1">
+      <div class="input-group mb-4">
         <span class="input-group-addon">
           <i class="icon-user"></i>
         </span>
         <input [(ngModel)]="credentials.email"
           required type="text" class="form-control" placeholder="Email">
       </div>
-      <div class="input-group mb-1">
+      <div class="input-group mb-4">
         <span class="input-group-addon">
           <i class="icon-lock"></i>
         </span>
@@ -21,12 +21,12 @@ import * as auth from '../../state/auth.actions'
           required type="password" class="form-control" placeholder="Password">
       </div>
       <div class="row">
-        <div class="col-xs-4">
+        <div class="col-4">
           <button type="submit" class="btn btn-block btn-primary" (click)="login()">
             Sign in
           </button>
         </div>
-        <div class="col-xs-8 text-xs-right">
+        <div class="col-8 text-right">
           <a class="btn btn-outline-primary" [routerLink]="['/', 'password-recover']">
             Forgot Password
           </a>

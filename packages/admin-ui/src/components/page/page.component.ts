@@ -15,13 +15,6 @@ import { UiTabLink } from '../tabs/tabs.interface'
       </div>
     </div>
   `,
-  styles: [
-    `
-    .card-header {
-      padding-bottom: 0;
-    }
-  `,
-  ],
 })
 export class UiPageComponent {
   @Input() tabs: UiTabLink[]

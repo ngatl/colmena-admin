@@ -1,1 +1,1 @@
-export * from './aside.directive'
+export * from './aside.directive';

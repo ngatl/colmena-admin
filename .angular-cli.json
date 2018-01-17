@@ -48,6 +48,12 @@
       "appRoot": ""
     },
     {
+      "name": "../modules/admin/dev",
+      "root": "libs/../modules/admin/dev/src",
+      "test": "../../../../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "../modules/admin/system",
       "root": "modules/admin/system/src",
       "test": "../../../test.js",

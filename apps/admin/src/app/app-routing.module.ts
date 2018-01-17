@@ -6,7 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
 import { RouterComponent } from './components/router/router.component'
 
 const routeConfig: ExtraOptions = {
-  enableTracing: true,
+  enableTracing: false,
   initialNavigation: 'enabled',
   useHash: true,
 }
@@ -26,14 +26,14 @@ const routes: Routes = [
     path: '',
     component: LayoutFullComponent,
     children: [
-      // { path: '', loadChildren: './extensions-routing.module#ExtensionsRoutingModule' },
+      // { path: '', loadChildren: './extensions.module#ExtensionsRoutingModule' },
       { path: 'content', loadChildren: '../../../../modules/admin/content/src/content.module#ContentModule' },
       // { path: 'core', loadChildren: '@colmena/module-admin-core#CoreModule' },
       { path: 'dashboard', loadChildren: '../../../../modules/admin/dashboard/src/dashboard.module#DashboardModule' },
       // { path: 'browser', loadChildren: '@colmena/module-admin-data-browser#DataBrowserModule' },
       // { path: 'development', loadChildren: '@colmena/module-admin-dev#DevModule' },
       // { path: 'storage', loadChildren: '@colmena/module-admin-storage#StorageModule' },
-      // { path: 'system', loadChildren: '@colmena/module-admin-system#SystemModule' },
+      { path: 'system', loadChildren: '../../../../modules/admin/system/src/system.module#SystemModule' },
     ],
   },
   { path: '**', redirectTo: 'not-found' },

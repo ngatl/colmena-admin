@@ -1,1 +1,1 @@
-export * from './sidebar.directive'
+export * from './sidebar.directive';

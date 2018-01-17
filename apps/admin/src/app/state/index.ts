@@ -3,7 +3,8 @@ import { ActionReducerMap } from '@ngrx/store'
 
 import * as fromApp from './app.reducers'
 import * as fromAuth from './../../../../../modules/admin/auth/src/state/auth.reducers'
-import * as fromLayout from './../../../../../packages/admin-layout/src/+state/layout.interfaces'
+import { Layout as fromLayoutState } from './../../../../../packages/admin-layout/src/+state/layout.interfaces'
+import { layoutReducer as fromLayoutReducer } from './../../../../../packages/admin-layout/src/+state/layout.reducer'
 
 export * from './app.actions'
 export * from './app.effects'
@@ -20,13 +21,13 @@ export interface UnsafeAction extends Action {
 export interface State {
   app: fromApp.State
   auth: fromAuth.AuthState
-  layout?: fromLayout.LayoutState
+  layout?: fromLayoutState
 }
 
 export const reducers: ActionReducerMap<State> = {
   app: fromApp.reducer,
   auth: fromAuth.reducer,
-  // layout: fromLayout.reducer
+  layout: fromLayoutReducer
 }
 
 export const reducersConfig = {

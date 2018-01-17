@@ -4,10 +4,10 @@ import { Component, Input } from '@angular/core'
   selector: 'ui-dashboard-icon',
   template: `
     <div class="card">
-      <div class="card-block p-1 clearfix">
-        <i class="{{icon}} bg-{{type}} p-1 font-2xl mr-1 pull-left"></i>
-        <div class="text-muted text-uppercase font-weight-bold font-xs">{{label}}</div>
-        <div class="h5 text-primary mb-0 mt-h">{{count}}</div>
+      <div class="card-body p-3 clearfix">
+        <i class="{{icon}} bg-{{type}} p-3 font-2xl mr-3 float-left"></i>
+        <div class="h5 text-info mb-0 mt-2">{{name}}</div>
+        <div class="text-muted text-uppercase font-weight-bold font-xs">{{count}}</div>
       </div>
     </div>
   `,
@@ -25,6 +25,6 @@ import { Component, Input } from '@angular/core'
 export class UiDashboardIconComponent {
   @Input() count
   @Input() icon
-  @Input() label
+  @Input() name
   @Input() type
 }

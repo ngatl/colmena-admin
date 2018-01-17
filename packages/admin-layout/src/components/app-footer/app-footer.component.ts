@@ -5,6 +5,11 @@ import { Layout, LayoutState } from '../../+state/layout.interfaces'
 @Component({
   selector: 'app-footer',
   templateUrl: './app-footer.component.html',
+  styles: [`
+    .app-footer {
+      padding: 15px;
+    }
+  `]
 })
 export class AppFooterComponent implements OnInit {
   public footerLeft: string

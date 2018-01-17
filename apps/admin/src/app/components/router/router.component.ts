@@ -10,7 +10,6 @@ export class RouterComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('auth').subscribe((res: any) => {
-      console.log('router res', res)
       return this.store.dispatch({ type: res && res.loggedIn ? 'APP_REDIRECT_DASHBOARD' : 'APP_REDIRECT_LOGIN' })
     })
   }

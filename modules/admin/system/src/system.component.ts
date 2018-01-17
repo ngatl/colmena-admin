@@ -10,10 +10,10 @@ import { Store } from '@ngrx/store'
         <div class="row">
           <div class="col-md-3" *ngFor="let widget of widgets">
             <ui-dashboard-icon
-              [routerLink]="widget.link"
+              [routerLink]="widget.url"
               [count]="widget.count"
               [icon]="widget.icon"
-              [label]="widget.label"
+              [name]="widget.name"
               [type]="widget.type">
             </ui-dashboard-icon>
           </div>

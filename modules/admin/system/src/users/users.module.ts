@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
 import { AppSharedModule } from '../../../../../apps/admin/src/app/app-shared.module'
 
-
 import { UsersRoutingModule } from './users-routing.module'
 
 import { UsersService } from './users.service'
