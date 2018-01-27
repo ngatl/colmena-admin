@@ -9,8 +9,10 @@ export const routes: Routes = [ {
   },
   children: [
     { path: '', component: ConferenceDashboardComponent },
-    { path: '', loadChildren: './speakers/speakers.module#SpeakersModule' },
-    { path: '', loadChildren: './sponsors/sponsors.module#SponsorsModule' },
+    { path: 'attendees', loadChildren: './attendees/attendees.module#AttendeesModule' },
+    { path: 'speakers', loadChildren: './speakers/speakers.module#SpeakersModule' },
+    { path: 'sponsors', loadChildren: './sponsors/sponsors.module#SponsorsModule' },
+    { path: 'tickets', loadChildren: './tickets/tickets.module#TicketsModule' },
   ],
 } ]
 @NgModule({

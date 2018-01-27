@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router'
 import { LayoutFullComponent } from '../../../../packages/admin-layout'
 
 import { ConferenceModule } from '../../../../extensions/admin-conference/src'
+import { AttendeesModule } from '../../../../extensions/admin-conference/src/attendees/attendees.module'
 import { SpeakersModule } from '../../../../extensions/admin-conference/src/speakers/speakers.module'
 import { SponsorsModule } from '../../../../extensions/admin-conference/src/sponsors/sponsors.module'
+import { TicketsModule } from '../../../../extensions/admin-conference/src/tickets/tickets.module'
 
 /**
  * Step 1: Add a route to lazy load your extension

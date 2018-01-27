@@ -6,7 +6,7 @@ import { SponsorsIndexComponent } from './components/sponsors-index.component'
 import { SponsorFormComponent } from './components/sponsor-form.component'
 
 export const routes: Routes = [ {
-  path: 'sponsors',
+  path: '',
   data: {
     title: 'Sponsors',
   },

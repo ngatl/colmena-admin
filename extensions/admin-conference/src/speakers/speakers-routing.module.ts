@@ -6,7 +6,7 @@ import { SpeakersIndexComponent } from './components/speakers-index.component'
 import { SpeakerFormComponent } from './components/speaker-form.component'
 
 export const routes: Routes = [ {
-  path: 'speakers',
+  path: '',
   data: {
     title: 'Speakers',
   },
