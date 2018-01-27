@@ -1,30 +1,30 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface MetaInterface {
-  "id"?: any;
+export interface ConferenceRegistrationInterface {
+  "id": string;
 }
 
-export class Meta implements MetaInterface {
-  "id": any;
-  constructor(data?: MetaInterface) {
+export class ConferenceRegistration implements ConferenceRegistrationInterface {
+  "id": string;
+  constructor(data?: ConferenceRegistrationInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Meta`.
+   * i.e. `ConferenceRegistration`.
    */
   public static getModelName() {
-    return "Meta";
+    return "ConferenceRegistration";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of Meta for dynamic purposes.
+  * This method creates an instance of ConferenceRegistration for dynamic purposes.
   **/
-  public static factory(data: MetaInterface): Meta{
-    return new Meta(data);
+  public static factory(data: ConferenceRegistrationInterface): ConferenceRegistration{
+    return new ConferenceRegistration(data);
   }
   /**
   * @method getModelDefinition
@@ -35,12 +35,12 @@ export class Meta implements MetaInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'Meta',
-      plural: 'Meta',
+      name: 'ConferenceRegistration',
+      plural: 'ConferenceRegistrations',
       properties: {
         "id": {
           name: 'id',
-          type: 'any'
+          type: 'string'
         },
       },
       relations: {

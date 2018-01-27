@@ -10,23 +10,21 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { SystemUser } from '../../models/SystemUser';
+import { ConferenceAttendee } from '../../models/ConferenceAttendee';
 import { SocketConnection } from '../../sockets/socket.connections';
-import { ContentEvent } from '../../models/ContentEvent';
-import { ContentPage } from '../../models/ContentPage';
-import { ContentProduct } from '../../models/ContentProduct';
-import { ContentPost } from '../../models/ContentPost';
+import { ConferenceTicket } from '../../models/ConferenceTicket';
+import { ConferenceAttendeeNote } from '../../models/ConferenceAttendeeNote';
 
 
 /**
- * Api services for the `SystemUser` model.
+ * Api services for the `ConferenceAttendee` model.
  *
  * **Details**
  *
- * System: Manage Users
+ * Conference: Manage Attendees in a Domain
  */
 @Injectable()
-export class SystemUserApi extends BaseLoopBackApi {
+export class ConferenceAttendeeApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -42,7 +40,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Find a related item by id for accessTokens.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for accessTokens
    *
@@ -52,13 +50,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public findByIdAccessTokens(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/:fk";
+    "/ConferenceAttendees/:id/accessTokens/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -72,7 +70,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Delete a related item by id for accessTokens.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for accessTokens
    *
@@ -85,7 +83,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public destroyByIdAccessTokens(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/:fk";
+    "/ConferenceAttendees/:id/accessTokens/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -99,7 +97,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Update a related item by id for accessTokens.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for accessTokens
    *
@@ -113,13 +111,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public updateByIdAccessTokens(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/:fk";
+    "/ConferenceAttendees/:id/accessTokens/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -135,7 +133,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Find a related item by id for roles.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for roles
    *
@@ -145,13 +143,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public findByIdRoles(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles/:fk";
+    "/ConferenceAttendees/:id/roles/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -165,7 +163,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Delete a related item by id for roles.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for roles
    *
@@ -178,7 +176,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public destroyByIdRoles(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles/:fk";
+    "/ConferenceAttendees/:id/roles/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -192,7 +190,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Update a related item by id for roles.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for roles
    *
@@ -206,13 +204,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public updateByIdRoles(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles/:fk";
+    "/ConferenceAttendees/:id/roles/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -228,7 +226,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Add a related item by id for roles.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for roles
    *
@@ -242,13 +240,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public linkRoles(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles/rel/:fk";
+    "/ConferenceAttendees/:id/roles/rel/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -264,7 +262,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Remove the roles relation to an item by id.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for roles
    *
@@ -277,7 +275,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public unlinkRoles(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles/rel/:fk";
+    "/ConferenceAttendees/:id/roles/rel/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -291,7 +289,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Check the existence of roles relation to an item by id.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {any} fk Foreign key for roles
    *
@@ -301,13 +299,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public existsRoles(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "HEAD";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles/rel/:fk";
+    "/ConferenceAttendees/:id/roles/rel/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -319,11 +317,11 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Find a related item by id for contentEvents.
+   * Find a related item by id for tickets.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
-   * @param {any} fk Foreign key for contentEvents
+   * @param {any} fk Foreign key for tickets
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -331,13 +329,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public findByIdContentEvents(id: any, fk: any, customHeaders?: Function): Observable<any> {
+  public findByIdTickets(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents/:fk";
+    "/ConferenceAttendees/:id/tickets/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -349,11 +347,11 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Delete a related item by id for contentEvents.
+   * Delete a related item by id for tickets.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
-   * @param {any} fk Foreign key for contentEvents
+   * @param {any} fk Foreign key for tickets
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -361,10 +359,10 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdContentEvents(id: any, fk: any, customHeaders?: Function): Observable<any> {
+  public destroyByIdTickets(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents/:fk";
+    "/ConferenceAttendees/:id/tickets/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -376,11 +374,11 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Update a related item by id for contentEvents.
+   * Update a related item by id for tickets.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
-   * @param {any} fk Foreign key for contentEvents
+   * @param {any} fk Foreign key for tickets
    *
    * @param {object} data Request data.
    *
@@ -392,13 +390,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public updateByIdContentEvents(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
+  public updateByIdTickets(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents/:fk";
+    "/ConferenceAttendees/:id/tickets/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -412,11 +410,11 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Find a related item by id for contentPages.
+   * Find a related item by id for notes.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
-   * @param {any} fk Foreign key for contentPages
+   * @param {any} fk Foreign key for notes
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -424,13 +422,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public findByIdContentPages(id: any, fk: any, customHeaders?: Function): Observable<any> {
+  public findByIdNotes(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages/:fk";
+    "/ConferenceAttendees/:id/notes/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -442,11 +440,11 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Delete a related item by id for contentPages.
+   * Delete a related item by id for notes.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
-   * @param {any} fk Foreign key for contentPages
+   * @param {any} fk Foreign key for notes
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -454,10 +452,10 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdContentPages(id: any, fk: any, customHeaders?: Function): Observable<any> {
+  public destroyByIdNotes(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages/:fk";
+    "/ConferenceAttendees/:id/notes/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -469,11 +467,11 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Update a related item by id for contentPages.
+   * Update a related item by id for notes.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
-   * @param {any} fk Foreign key for contentPages
+   * @param {any} fk Foreign key for notes
    *
    * @param {object} data Request data.
    *
@@ -485,13 +483,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public updateByIdContentPages(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
+  public updateByIdNotes(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages/:fk";
+    "/ConferenceAttendees/:id/notes/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -505,195 +503,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Find a related item by id for contentProducts.
+   * Queries accessTokens of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
-   *
-   * @param {any} fk Foreign key for contentProducts
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public findByIdContentProducts(id: any, fk: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Delete a related item by id for contentProducts.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {any} fk Foreign key for contentProducts
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public destroyByIdContentProducts(id: any, fk: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Update a related item by id for contentProducts.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {any} fk Foreign key for contentProducts
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public updateByIdContentProducts(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PUT";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Find a related item by id for contentPosts.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {any} fk Foreign key for contentPosts
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public findByIdContentPosts(id: any, fk: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Delete a related item by id for contentPosts.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {any} fk Foreign key for contentPosts
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public destroyByIdContentPosts(id: any, fk: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Update a related item by id for contentPosts.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {any} fk Foreign key for contentPosts
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public updateByIdContentPosts(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PUT";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Queries accessTokens of SystemUser.
-   *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} filter 
    *
@@ -703,13 +515,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public getAccessTokens(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
+    "/ConferenceAttendees/:id/accessTokens";
     let _routeParams: any = {
       id: id
     };
@@ -723,7 +535,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in accessTokens of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -735,13 +547,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public createAccessTokens(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
+    "/ConferenceAttendees/:id/accessTokens";
     let _routeParams: any = {
       id: id
     };
@@ -756,7 +568,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Deletes all accessTokens of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -767,7 +579,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public deleteAccessTokens(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
+    "/ConferenceAttendees/:id/accessTokens";
     let _routeParams: any = {
       id: id
     };
@@ -778,9 +590,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Counts accessTokens of SystemUser.
+   * Counts accessTokens of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} where Criteria to match model instances
    *
@@ -795,7 +607,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public countAccessTokens(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/count";
+    "/ConferenceAttendees/:id/accessTokens/count";
     let _routeParams: any = {
       id: id
     };
@@ -807,9 +619,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Queries roles of SystemUser.
+   * Queries roles of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} filter 
    *
@@ -819,13 +631,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public getRoles(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles";
+    "/ConferenceAttendees/:id/roles";
     let _routeParams: any = {
       id: id
     };
@@ -839,7 +651,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in roles of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -851,13 +663,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public createRoles(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles";
+    "/ConferenceAttendees/:id/roles";
     let _routeParams: any = {
       id: id
     };
@@ -872,7 +684,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Deletes all roles of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -883,7 +695,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public deleteRoles(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles";
+    "/ConferenceAttendees/:id/roles";
     let _routeParams: any = {
       id: id
     };
@@ -894,9 +706,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Counts roles of SystemUser.
+   * Counts roles of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} where Criteria to match model instances
    *
@@ -911,7 +723,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public countRoles(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles/count";
+    "/ConferenceAttendees/:id/roles/count";
     let _routeParams: any = {
       id: id
     };
@@ -923,9 +735,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Queries contentEvents of SystemUser.
+   * Queries tickets of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} filter 
    *
@@ -935,13 +747,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public getContentEvents(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
+  public getTickets(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents";
+    "/ConferenceAttendees/:id/tickets";
     let _routeParams: any = {
       id: id
     };
@@ -953,9 +765,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Creates a new instance in contentEvents of this model.
+   * Creates a new instance in tickets of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -967,13 +779,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public createContentEvents(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
+  public createTickets(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents";
+    "/ConferenceAttendees/:id/tickets";
     let _routeParams: any = {
       id: id
     };
@@ -986,9 +798,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Deletes all contentEvents of this model.
+   * Deletes all tickets of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -996,10 +808,10 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deleteContentEvents(id: any, customHeaders?: Function): Observable<any> {
+  public deleteTickets(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents";
+    "/ConferenceAttendees/:id/tickets";
     let _routeParams: any = {
       id: id
     };
@@ -1010,9 +822,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Counts contentEvents of SystemUser.
+   * Counts tickets of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} where Criteria to match model instances
    *
@@ -1024,10 +836,10 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countContentEvents(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
+  public countTickets(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents/count";
+    "/ConferenceAttendees/:id/tickets/count";
     let _routeParams: any = {
       id: id
     };
@@ -1039,9 +851,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Queries contentPages of SystemUser.
+   * Queries notes of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} filter 
    *
@@ -1051,13 +863,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public getContentPages(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
+  public getNotes(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages";
+    "/ConferenceAttendees/:id/notes";
     let _routeParams: any = {
       id: id
     };
@@ -1069,9 +881,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Creates a new instance in contentPages of this model.
+   * Creates a new instance in notes of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1083,13 +895,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public createContentPages(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
+  public createNotes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages";
+    "/ConferenceAttendees/:id/notes";
     let _routeParams: any = {
       id: id
     };
@@ -1102,9 +914,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Deletes all contentPages of this model.
+   * Deletes all notes of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -1112,10 +924,10 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deleteContentPages(id: any, customHeaders?: Function): Observable<any> {
+  public deleteNotes(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages";
+    "/ConferenceAttendees/:id/notes";
     let _routeParams: any = {
       id: id
     };
@@ -1126,9 +938,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Counts contentPages of SystemUser.
+   * Counts notes of ConferenceAttendee.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} where Criteria to match model instances
    *
@@ -1140,242 +952,10 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countContentPages(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
+  public countNotes(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages/count";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Queries contentProducts of SystemUser.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} filter 
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public getContentProducts(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Creates a new instance in contentProducts of this model.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public createContentProducts(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Deletes all contentProducts of this model.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public deleteContentProducts(id: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Counts contentProducts of SystemUser.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} where Criteria to match model instances
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `count` – `{number}` - 
-   */
-  public countContentProducts(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts/count";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Queries contentPosts of SystemUser.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} filter 
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public getContentPosts(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Creates a new instance in contentPosts of this model.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public createContentPosts(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Deletes all contentPosts of this model.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public deleteContentPosts(id: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Counts contentPosts of SystemUser.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} where Criteria to match model instances
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `count` – `{number}` - 
-   */
-  public countContentPosts(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts/count";
+    "/ConferenceAttendees/:id/notes/count";
     let _routeParams: any = {
       id: id
     };
@@ -1399,13 +979,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users";
+    "/ConferenceAttendees";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -1418,7 +998,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1430,13 +1010,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id";
+    "/ConferenceAttendees/:id";
     let _routeParams: any = {
       id: id
     };
@@ -1476,7 +1056,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public login(credentials: any, include: any = 'user', rememberMe: boolean = true, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/login";
+    "/ConferenceAttendees/login";
     let _routeParams: any = {};
     let _postBody: any = {
       credentials: credentials
@@ -1512,7 +1092,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public logout(customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/logout";
+    "/ConferenceAttendees/logout";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -1525,7 +1105,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Trigger user's identity verification with configured verifyOptions
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1540,7 +1120,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public verify(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/verify";
+    "/ConferenceAttendees/:id/verify";
     let _routeParams: any = {
       id: id
     };
@@ -1568,7 +1148,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public confirm(uid: any, token: any, redirect: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/confirm";
+    "/ConferenceAttendees/confirm";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -1595,7 +1175,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public resetPassword(options: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/reset";
+    "/ConferenceAttendees/reset";
     let _routeParams: any = {};
     let _postBody: any = {
       options: options
@@ -1623,7 +1203,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public changePassword(oldPassword: any, newPassword: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/change-password";
+    "/ConferenceAttendees/change-password";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -1649,7 +1229,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   public setPassword(newPassword: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/reset-password";
+    "/ConferenceAttendees/reset-password";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -1661,7 +1241,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Get the roles for this user.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -1669,13 +1249,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public info(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/info";
+    "/ConferenceAttendees/:id/info";
     let _routeParams: any = {
       id: id
     };
@@ -1688,7 +1268,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Add a role to this user.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1700,13 +1280,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public addRole(id: any, roleName: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/addRole";
+    "/ConferenceAttendees/:id/addRole";
     let _routeParams: any = {
       id: id
     };
@@ -1720,7 +1300,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Remove a role from this user.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1732,19 +1312,48 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public removeRole(id: any, roleName: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/removeRole";
+    "/ConferenceAttendees/:id/removeRole";
     let _routeParams: any = {
       id: id
     };
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof roleName !== 'undefined' && roleName !== null) _urlParams.roleName = roleName;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {any} id ConferenceAttendee id
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceAttendee` object.)
+   * </em>
+   */
+  public sponsorNotes(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ConferenceAttendees/:id/sponsorNotes";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -1760,13 +1369,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public loginFacebook(token: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/loginFacebook";
+    "/ConferenceAttendees/loginFacebook";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -1788,13 +1397,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public _template_passwordResetHtml_remote(options: any = {}, params: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/_template_passwordResetHtml";
+    "/ConferenceAttendees/_template_passwordResetHtml";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -1817,13 +1426,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public _template_passwordResetText_remote(options: any = {}, params: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/_template_passwordResetText";
+    "/ConferenceAttendees/_template_passwordResetText";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -1836,7 +1445,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in accessTokens of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1848,13 +1457,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public createManyAccessTokens(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
+    "/ConferenceAttendees/:id/accessTokens";
     let _routeParams: any = {
       id: id
     };
@@ -1869,7 +1478,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in roles of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1881,13 +1490,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
   public createManyRoles(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/roles";
+    "/ConferenceAttendees/:id/roles";
     let _routeParams: any = {
       id: id
     };
@@ -1900,9 +1509,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Creates a new instance in contentEvents of this model.
+   * Creates a new instance in tickets of this model.
    *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1914,13 +1523,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public createManyContentEvents(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
+  public createManyTickets(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentEvents";
+    "/ConferenceAttendees/:id/tickets";
     let _routeParams: any = {
       id: id
     };
@@ -1933,42 +1542,9 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Creates a new instance in contentPages of this model.
+   * Creates a new instance in notes of this model.
    *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public createManyContentPages(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPages";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Creates a new instance in contentProducts of this model.
-   *
-   * @param {any} id SystemUser id
+   * @param {any} id ConferenceAttendee id
    *
    * @param {object} data Request data.
    *
@@ -1980,46 +1556,13 @@ export class SystemUserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
+   * This usually means the response is a `ConferenceAttendee` object.)
    * </em>
    */
-  public createManyContentProducts(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
+  public createManyNotes(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentProducts";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Creates a new instance in contentPosts of this model.
-   *
-   * @param {any} id SystemUser id
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `SystemUser` object.)
-   * </em>
-   */
-  public createManyContentPosts(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/contentPosts";
+    "/ConferenceAttendees/:id/notes";
     let _routeParams: any = {
       id: id
     };
@@ -2032,8 +1575,8 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
   /**
    * @ngdoc method
-   * @name sdk.SystemUser#getCurrent
-   * @methodOf sdk.SystemUser
+   * @name sdk.ConferenceAttendee#getCurrent
+   * @methodOf sdk.ConferenceAttendee
    *
    * @description
    *
@@ -2046,7 +1589,7 @@ export class SystemUserApi extends BaseLoopBackApi {
    */
   public getCurrent(filter: LoopBackFilter = {}): Observable<any> {
     let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() + "/Users" + "/:id";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() + "/ConferenceAttendees" + "/:id";
     let id: any = this.auth.getCurrentUserId();
     if (id == null)
     id = '__anonymous__';
@@ -2058,8 +1601,8 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
   /**
    * Get data of the currently logged user that was returned by the last
-   * call to {@link sdk.SystemUser#login} or
-   * {@link sdk.SystemUser#getCurrent}. Return null when there
+   * call to {@link sdk.ConferenceAttendee#login} or
+   * {@link sdk.ConferenceAttendee#getCurrent}. Return null when there
    * is no user logged in or the data of the current user were not fetched
    * yet.
    *
@@ -2070,7 +1613,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
   /**
    * Get data of the currently logged access tokern that was returned by the last
-   * call to {@link sdk.SystemUser#login}
+   * call to {@link sdk.ConferenceAttendee#login}
    *
    * @returns object An AccessToken instance.
    */
@@ -2078,7 +1621,7 @@ export class SystemUserApi extends BaseLoopBackApi {
     return this.auth.getToken();
   }
   /**
-   * @name sdk.SystemUser#isAuthenticated
+   * @name sdk.ConferenceAttendee#isAuthenticated
    *
    * @returns {boolean} True if the current user is authenticated (logged in).
    */
@@ -2087,7 +1630,7 @@ export class SystemUserApi extends BaseLoopBackApi {
   }
 
   /**
-   * @name sdk.SystemUser#getCurrentId
+   * @name sdk.ConferenceAttendee#getCurrentId
    *
    * @returns object Id of the currently logged-in user or null.
    */
@@ -2097,9 +1640,9 @@ export class SystemUserApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `SystemUser`.
+   * i.e. `ConferenceAttendee`.
    */
   public getModelName() {
-    return "SystemUser";
+    return "ConferenceAttendee";
   }
 }

@@ -11,7 +11,7 @@ export interface ContentProductInterface {
   "description"?: string;
   "sku"?: string;
   "price"?: number;
-  "id"?: number;
+  "id"?: any;
   "systemDomainId"?: string;
   "systemUserId"?: string;
   "storageFileId"?: string;
@@ -27,7 +27,7 @@ export class ContentProduct implements ContentProductInterface {
   "description": string;
   "sku": string;
   "price": number;
-  "id": number;
+  "id": any;
   "systemDomainId": string;
   "systemUserId": string;
   "storageFileId": string;
@@ -66,8 +66,6 @@ export class ContentProduct implements ContentProductInterface {
     return {
       name: 'ContentProduct',
       plural: 'ContentProducts',
-      path: 'ContentProducts',
-      idName: 'id',
       properties: {
         "name": {
           name: 'name',
@@ -87,7 +85,7 @@ export class ContentProduct implements ContentProductInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "systemDomainId": {
           name: 'systemDomainId',
@@ -114,26 +112,17 @@ export class ContentProduct implements ContentProductInterface {
         storageFile: {
           name: 'storageFile',
           type: 'StorageFile',
-          model: 'StorageFile',
-          relationType: 'belongsTo',
-                  keyFrom: 'storageFileId',
-          keyTo: 'id'
+          model: 'StorageFile'
         },
         systemDomain: {
           name: 'systemDomain',
           type: 'SystemDomain',
-          model: 'SystemDomain',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemDomainId',
-          keyTo: 'id'
+          model: 'SystemDomain'
         },
         systemUser: {
           name: 'systemUser',
           type: 'SystemUser',
-          model: 'SystemUser',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemUserId',
-          keyTo: 'id'
+          model: 'SystemUser'
         },
       }
     }

@@ -37,8 +37,6 @@ export class StorageContainer implements StorageContainerInterface {
     return {
       name: 'StorageContainer',
       plural: 'StorageContainers',
-      path: 'StorageContainers',
-      idName: 'id',
       properties: {
         "id": {
           name: 'id',

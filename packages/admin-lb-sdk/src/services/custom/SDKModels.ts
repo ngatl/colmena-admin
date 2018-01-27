@@ -12,6 +12,16 @@ import { StorageFile } from '../../models/StorageFile';
 import { SystemDomain } from '../../models/SystemDomain';
 import { SystemSetting } from '../../models/SystemSetting';
 import { SystemUser } from '../../models/SystemUser';
+import { ConferenceEvent } from '../../models/ConferenceEvent';
+import { ConferenceLocation } from '../../models/ConferenceLocation';
+import { ConferenceSpeaker } from '../../models/ConferenceSpeaker';
+import { ConferenceSponsor } from '../../models/ConferenceSponsor';
+import { ConferenceTicket } from '../../models/ConferenceTicket';
+import { ConferenceRegistration } from '../../models/ConferenceRegistration';
+import { ConferenceRelease } from '../../models/ConferenceRelease';
+import { ConferenceAttendee } from '../../models/ConferenceAttendee';
+import { ConferenceAttendeeNote } from '../../models/ConferenceAttendeeNote';
+import { Dev } from '../../models/Dev';
 import { Ping } from '../../models/Ping';
 import { Meta } from '../../models/Meta';
 
@@ -33,6 +43,16 @@ export class SDKModels {
     SystemDomain: SystemDomain,
     SystemSetting: SystemSetting,
     SystemUser: SystemUser,
+    ConferenceEvent: ConferenceEvent,
+    ConferenceLocation: ConferenceLocation,
+    ConferenceSpeaker: ConferenceSpeaker,
+    ConferenceSponsor: ConferenceSponsor,
+    ConferenceTicket: ConferenceTicket,
+    ConferenceRegistration: ConferenceRegistration,
+    ConferenceRelease: ConferenceRelease,
+    ConferenceAttendee: ConferenceAttendee,
+    ConferenceAttendeeNote: ConferenceAttendeeNote,
+    Dev: Dev,
     Ping: Ping,
     Meta: Meta,
     

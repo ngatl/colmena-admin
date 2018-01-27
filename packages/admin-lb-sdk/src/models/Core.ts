@@ -2,11 +2,11 @@
 
 declare var Object: any;
 export interface CoreInterface {
-  "id"?: number;
+  "id"?: any;
 }
 
 export class Core implements CoreInterface {
-  "id": number;
+  "id": any;
   constructor(data?: CoreInterface) {
     Object.assign(this, data);
   }
@@ -37,12 +37,10 @@ export class Core implements CoreInterface {
     return {
       name: 'Core',
       plural: 'Core',
-      path: 'Core',
-      idName: 'id',
       properties: {
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

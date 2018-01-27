@@ -10,19 +10,20 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { Meta } from '../../models/Meta';
+import { ConferenceEvent } from '../../models/ConferenceEvent';
 import { SocketConnection } from '../../sockets/socket.connections';
+import { StorageFile } from '../../models/StorageFile';
 
 
 /**
- * Api services for the `Meta` model.
+ * Api services for the `ConferenceEvent` model.
  *
  * **Details**
  *
- * Provide API metadata
+ * Conference: Manage Events in a Domain
  */
 @Injectable()
-export class MetaApi extends BaseLoopBackApi {
+export class ConferenceEventApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -36,32 +37,11 @@ export class MetaApi extends BaseLoopBackApi {
   }
 
   /**
-   * Get all Models
+   * Fetches belongsTo relation file.
    *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
+   * @param {any} id ConferenceEvent id
    *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `Meta` object.)
-   * </em>
-   */
-  public getModels(customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Meta";
-    let _routeParams: any = {};
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Get a Model by name
-   *
-   * @param {any} name Model name
+   * @param {boolean} refresh 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -69,49 +49,90 @@ export class MetaApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Meta` object.)
+   * This usually means the response is a `ConferenceEvent` object.)
    * </em>
    */
-  public getModelById(name: any, customHeaders?: Function): Observable<any> {
+  public getFile(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Meta/:name";
-    let _routeParams: any = {};
+    "/ConferenceEvents/:id/file";
+    let _routeParams: any = {
+      id: id
+    };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof name !== 'undefined' && name !== null) _urlParams.name = name;
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
-   * Get graphviz schema of all Models
+   * Patch an existing model instance or insert a new one into the data source.
    *
-   * @param {Object} res Response object
+   * @param {object} data Request data.
+   *
+   *  - `data` – `{object}` - Model instance data
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
-   * This method returns no data.
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceEvent` object.)
+   * </em>
    */
-  public graphviz(res: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
+  public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Meta/graphviz";
+    "/ConferenceEvents";
     let _routeParams: any = {};
-    let _postBody: any = {};
+    let _postBody: any = {
+      data: data
+    };
     let _urlParams: any = {};
-    if (typeof res !== 'undefined' && res !== null) _urlParams.res = res;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Patch attributes for a model instance and persist it into the data source.
+   *
+   * @param {any} id ConferenceEvent id
+   *
+   * @param {object} data Request data.
+   *
+   *  - `data` – `{object}` - An object of model property name/value pairs
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceEvent` object.)
+   * </em>
+   */
+  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PATCH";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ConferenceEvents/:id";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Meta`.
+   * i.e. `ConferenceEvent`.
    */
   public getModelName() {
-    return "Meta";
+    return "ConferenceEvent";
   }
 }

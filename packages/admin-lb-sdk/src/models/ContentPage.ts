@@ -9,7 +9,7 @@ declare var Object: any;
 export interface ContentPageInterface {
   "name": string;
   "content"?: string;
-  "id"?: number;
+  "id"?: any;
   "systemDomainId"?: string;
   "systemUserId"?: string;
   "storageFileId"?: string;
@@ -23,7 +23,7 @@ export interface ContentPageInterface {
 export class ContentPage implements ContentPageInterface {
   "name": string;
   "content": string;
-  "id": number;
+  "id": any;
   "systemDomainId": string;
   "systemUserId": string;
   "storageFileId": string;
@@ -62,8 +62,6 @@ export class ContentPage implements ContentPageInterface {
     return {
       name: 'ContentPage',
       plural: 'ContentPages',
-      path: 'ContentPages',
-      idName: 'id',
       properties: {
         "name": {
           name: 'name',
@@ -75,7 +73,7 @@ export class ContentPage implements ContentPageInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "systemDomainId": {
           name: 'systemDomainId',
@@ -102,26 +100,17 @@ export class ContentPage implements ContentPageInterface {
         storageFile: {
           name: 'storageFile',
           type: 'StorageFile',
-          model: 'StorageFile',
-          relationType: 'belongsTo',
-                  keyFrom: 'storageFileId',
-          keyTo: 'id'
+          model: 'StorageFile'
         },
         systemDomain: {
           name: 'systemDomain',
           type: 'SystemDomain',
-          model: 'SystemDomain',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemDomainId',
-          keyTo: 'id'
+          model: 'SystemDomain'
         },
         systemUser: {
           name: 'systemUser',
           type: 'SystemUser',
-          model: 'SystemUser',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemUserId',
-          keyTo: 'id'
+          model: 'SystemUser'
         },
       }
     }

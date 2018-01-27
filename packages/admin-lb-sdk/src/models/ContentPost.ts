@@ -9,7 +9,7 @@ declare var Object: any;
 export interface ContentPostInterface {
   "title"?: string;
   "content"?: string;
-  "id"?: number;
+  "id"?: any;
   "systemDomainId"?: string;
   "systemUserId"?: string;
   "storageFileId"?: string;
@@ -23,7 +23,7 @@ export interface ContentPostInterface {
 export class ContentPost implements ContentPostInterface {
   "title": string;
   "content": string;
-  "id": number;
+  "id": any;
   "systemDomainId": string;
   "systemUserId": string;
   "storageFileId": string;
@@ -62,8 +62,6 @@ export class ContentPost implements ContentPostInterface {
     return {
       name: 'ContentPost',
       plural: 'ContentPosts',
-      path: 'ContentPosts',
-      idName: 'id',
       properties: {
         "title": {
           name: 'title',
@@ -75,7 +73,7 @@ export class ContentPost implements ContentPostInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "systemDomainId": {
           name: 'systemDomainId',
@@ -102,26 +100,17 @@ export class ContentPost implements ContentPostInterface {
         storageFile: {
           name: 'storageFile',
           type: 'StorageFile',
-          model: 'StorageFile',
-          relationType: 'belongsTo',
-                  keyFrom: 'storageFileId',
-          keyTo: 'id'
+          model: 'StorageFile'
         },
         systemDomain: {
           name: 'systemDomain',
           type: 'SystemDomain',
-          model: 'SystemDomain',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemDomainId',
-          keyTo: 'id'
+          model: 'SystemDomain'
         },
         systemUser: {
           name: 'systemUser',
           type: 'SystemUser',
-          model: 'SystemUser',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemUserId',
-          keyTo: 'id'
+          model: 'SystemUser'
         },
       }
     }

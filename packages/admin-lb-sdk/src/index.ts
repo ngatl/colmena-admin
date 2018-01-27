@@ -1,4 +1,3 @@
-/* tslint:disable */
 /**
 * @module SDKModule
 * @author Jonathan Casarrubias <t:@johncasarrubias> <gh:jonathan-casarrubias>
@@ -61,6 +60,16 @@ import { StorageFileApi } from './services/custom/StorageFile';
 import { SystemDomainApi } from './services/custom/SystemDomain';
 import { SystemSettingApi } from './services/custom/SystemSetting';
 import { SystemUserApi } from './services/custom/SystemUser';
+import { ConferenceEventApi } from './services/custom/ConferenceEvent';
+import { ConferenceLocationApi } from './services/custom/ConferenceLocation';
+import { ConferenceSpeakerApi } from './services/custom/ConferenceSpeaker';
+import { ConferenceSponsorApi } from './services/custom/ConferenceSponsor';
+import { ConferenceTicketApi } from './services/custom/ConferenceTicket';
+import { ConferenceRegistrationApi } from './services/custom/ConferenceRegistration';
+import { ConferenceReleaseApi } from './services/custom/ConferenceRelease';
+import { ConferenceAttendeeApi } from './services/custom/ConferenceAttendee';
+import { ConferenceAttendeeNoteApi } from './services/custom/ConferenceAttendeeNote';
+import { DevApi } from './services/custom/Dev';
 import { PingApi } from './services/custom/Ping';
 import { MetaApi } from './services/custom/Meta';
 /**
@@ -106,6 +115,16 @@ export class SDKBrowserModule {
         SystemDomainApi,
         SystemSettingApi,
         SystemUserApi,
+        ConferenceEventApi,
+        ConferenceLocationApi,
+        ConferenceSpeakerApi,
+        ConferenceSponsorApi,
+        ConferenceTicketApi,
+        ConferenceRegistrationApi,
+        ConferenceReleaseApi,
+        ConferenceAttendeeApi,
+        ConferenceAttendeeNoteApi,
+        DevApi,
         PingApi,
         MetaApi,
         internalStorageProvider,
@@ -125,4 +144,3 @@ export * from './lb.config';
 export * from './storage/storage.swaps';
 export { CookieBrowser } from './storage/cookie.browser';
 export { StorageBrowser } from './storage/storage.browser';
-

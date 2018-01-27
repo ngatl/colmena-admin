@@ -64,8 +64,6 @@ export class StorageFile implements StorageFileInterface {
     return {
       name: 'StorageFile',
       plural: 'StorageFiles',
-      path: 'StorageFiles',
-      idName: 'id',
       properties: {
         "id": {
           name: 'id',
@@ -96,42 +94,27 @@ export class StorageFile implements StorageFileInterface {
         contentEvents: {
           name: 'contentEvents',
           type: 'ContentEvent[]',
-          model: 'ContentEvent',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'storageFileId'
+          model: 'ContentEvent'
         },
         contentPages: {
           name: 'contentPages',
           type: 'ContentPage[]',
-          model: 'ContentPage',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'storageFileId'
+          model: 'ContentPage'
         },
         contentProducts: {
           name: 'contentProducts',
           type: 'ContentProduct[]',
-          model: 'ContentProduct',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'storageFileId'
+          model: 'ContentProduct'
         },
         contentPosts: {
           name: 'contentPosts',
           type: 'ContentPost[]',
-          model: 'ContentPost',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'storageFileId'
+          model: 'ContentPost'
         },
         systemDomain: {
           name: 'systemDomain',
           type: 'SystemDomain',
-          model: 'SystemDomain',
-          relationType: 'belongsTo',
-                  keyFrom: 'container',
-          keyTo: 'id'
+          model: 'SystemDomain'
         },
       }
     }

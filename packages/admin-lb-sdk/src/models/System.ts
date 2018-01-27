@@ -37,8 +37,6 @@ export class System implements SystemInterface {
     return {
       name: 'System',
       plural: 'System',
-      path: 'System',
-      idName: 'id',
       properties: {
         "id": {
           name: 'id',

@@ -37,8 +37,6 @@ export class Ping implements PingInterface {
     return {
       name: 'Ping',
       plural: 'Ping',
-      path: 'Ping',
-      idName: 'id',
       properties: {
         "id": {
           name: 'id',

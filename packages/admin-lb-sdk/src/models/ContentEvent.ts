@@ -10,7 +10,7 @@ export interface ContentEventInterface {
   "name": string;
   "date"?: Date;
   "location"?: string;
-  "id"?: number;
+  "id"?: any;
   "systemDomainId"?: string;
   "systemUserId"?: string;
   "storageFileId"?: string;
@@ -25,7 +25,7 @@ export class ContentEvent implements ContentEventInterface {
   "name": string;
   "date": Date;
   "location": string;
-  "id": number;
+  "id": any;
   "systemDomainId": string;
   "systemUserId": string;
   "storageFileId": string;
@@ -64,8 +64,6 @@ export class ContentEvent implements ContentEventInterface {
     return {
       name: 'ContentEvent',
       plural: 'ContentEvents',
-      path: 'ContentEvents',
-      idName: 'id',
       properties: {
         "name": {
           name: 'name',
@@ -81,7 +79,7 @@ export class ContentEvent implements ContentEventInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "systemDomainId": {
           name: 'systemDomainId',
@@ -108,26 +106,17 @@ export class ContentEvent implements ContentEventInterface {
         storageFile: {
           name: 'storageFile',
           type: 'StorageFile',
-          model: 'StorageFile',
-          relationType: 'belongsTo',
-                  keyFrom: 'storageFileId',
-          keyTo: 'id'
+          model: 'StorageFile'
         },
         systemDomain: {
           name: 'systemDomain',
           type: 'SystemDomain',
-          model: 'SystemDomain',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemDomainId',
-          keyTo: 'id'
+          model: 'SystemDomain'
         },
         systemUser: {
           name: 'systemUser',
           type: 'SystemUser',
-          model: 'SystemUser',
-          relationType: 'belongsTo',
-                  keyFrom: 'systemUserId',
-          keyTo: 'id'
+          model: 'SystemUser'
         },
       }
     }

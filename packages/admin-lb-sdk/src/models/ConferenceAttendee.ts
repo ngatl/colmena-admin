@@ -1,19 +1,17 @@
 /* tslint:disable */
 import {
-  ContentEvent,
-  ContentPage,
-  ContentProduct,
-  ContentPost
+  ConferenceTicket,
+  ConferenceAttendeeNote
 } from '../index';
 
 declare var Object: any;
-export interface SystemUserInterface {
+export interface ConferenceAttendeeInterface {
   "id": string;
-  "username": string;
   "email": string;
-  "firstName": string;
-  "lastName": string;
-  "fullName"?: string;
+  "name": string;
+  "company"?: string;
+  "phone"?: string;
+  "tags"?: string;
   "avatar"?: string;
   "realm"?: string;
   "emailVerified"?: boolean;
@@ -21,19 +19,17 @@ export interface SystemUserInterface {
   "modified"?: Date;
   accessTokens?: any[];
   roles?: any[];
-  contentEvents?: ContentEvent[];
-  contentPages?: ContentPage[];
-  contentProducts?: ContentProduct[];
-  contentPosts?: ContentPost[];
+  tickets?: ConferenceTicket[];
+  notes?: ConferenceAttendeeNote[];
 }
 
-export class SystemUser implements SystemUserInterface {
+export class ConferenceAttendee implements ConferenceAttendeeInterface {
   "id": string;
-  "username": string;
   "email": string;
-  "firstName": string;
-  "lastName": string;
-  "fullName": string;
+  "name": string;
+  "company": string;
+  "phone": string;
+  "tags": string;
   "avatar": string;
   "realm": string;
   "emailVerified": boolean;
@@ -41,28 +37,26 @@ export class SystemUser implements SystemUserInterface {
   "modified": Date;
   accessTokens: any[];
   roles: any[];
-  contentEvents: ContentEvent[];
-  contentPages: ContentPage[];
-  contentProducts: ContentProduct[];
-  contentPosts: ContentPost[];
-  constructor(data?: SystemUserInterface) {
+  tickets: ConferenceTicket[];
+  notes: ConferenceAttendeeNote[];
+  constructor(data?: ConferenceAttendeeInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `SystemUser`.
+   * i.e. `ConferenceAttendee`.
    */
   public static getModelName() {
-    return "SystemUser";
+    return "ConferenceAttendee";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of SystemUser for dynamic purposes.
+  * This method creates an instance of ConferenceAttendee for dynamic purposes.
   **/
-  public static factory(data: SystemUserInterface): SystemUser{
-    return new SystemUser(data);
+  public static factory(data: ConferenceAttendeeInterface): ConferenceAttendee{
+    return new ConferenceAttendee(data);
   }
   /**
   * @method getModelDefinition
@@ -73,31 +67,31 @@ export class SystemUser implements SystemUserInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'SystemUser',
-      plural: 'Users',
+      name: 'ConferenceAttendee',
+      plural: 'ConferenceAttendees',
       properties: {
         "id": {
           name: 'id',
-          type: 'string'
-        },
-        "username": {
-          name: 'username',
           type: 'string'
         },
         "email": {
           name: 'email',
           type: 'string'
         },
-        "firstName": {
-          name: 'firstName',
+        "name": {
+          name: 'name',
           type: 'string'
         },
-        "lastName": {
-          name: 'lastName',
+        "company": {
+          name: 'company',
           type: 'string'
         },
-        "fullName": {
-          name: 'fullName',
+        "phone": {
+          name: 'phone',
+          type: 'string'
+        },
+        "tags": {
+          name: 'tags',
           type: 'string'
         },
         "avatar": {
@@ -132,25 +126,15 @@ export class SystemUser implements SystemUserInterface {
           type: 'any[]',
           model: ''
         },
-        contentEvents: {
-          name: 'contentEvents',
-          type: 'ContentEvent[]',
-          model: 'ContentEvent'
+        tickets: {
+          name: 'tickets',
+          type: 'ConferenceTicket[]',
+          model: 'ConferenceTicket'
         },
-        contentPages: {
-          name: 'contentPages',
-          type: 'ContentPage[]',
-          model: 'ContentPage'
-        },
-        contentProducts: {
-          name: 'contentProducts',
-          type: 'ContentProduct[]',
-          model: 'ContentProduct'
-        },
-        contentPosts: {
-          name: 'contentPosts',
-          type: 'ContentPost[]',
-          model: 'ContentPost'
+        notes: {
+          name: 'notes',
+          type: 'ConferenceAttendeeNote[]',
+          model: 'ConferenceAttendeeNote'
         },
       }
     }

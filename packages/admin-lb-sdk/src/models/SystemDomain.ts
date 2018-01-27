@@ -62,8 +62,6 @@ export class SystemDomain implements SystemDomainInterface {
     return {
       name: 'SystemDomain',
       plural: 'Domains',
-      path: 'Domains',
-      idName: 'id',
       properties: {
         "id": {
           name: 'id',
@@ -90,42 +88,27 @@ export class SystemDomain implements SystemDomainInterface {
         contentEvents: {
           name: 'contentEvents',
           type: 'ContentEvent[]',
-          model: 'ContentEvent',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'systemDomainId'
+          model: 'ContentEvent'
         },
         contentPages: {
           name: 'contentPages',
           type: 'ContentPage[]',
-          model: 'ContentPage',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'systemDomainId'
+          model: 'ContentPage'
         },
         contentProducts: {
           name: 'contentProducts',
           type: 'ContentProduct[]',
-          model: 'ContentProduct',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'systemDomainId'
+          model: 'ContentProduct'
         },
         contentPosts: {
           name: 'contentPosts',
           type: 'ContentPost[]',
-          model: 'ContentPost',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'systemDomainId'
+          model: 'ContentPost'
         },
         storageFiles: {
           name: 'storageFiles',
           type: 'StorageFile[]',
-          model: 'StorageFile',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'container'
+          model: 'StorageFile'
         },
       }
     }

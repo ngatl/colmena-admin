@@ -1,4 +1,3 @@
-/* tslint:disable */
 import { FireLoopRef } from './index';
 
 export class FireLoop {

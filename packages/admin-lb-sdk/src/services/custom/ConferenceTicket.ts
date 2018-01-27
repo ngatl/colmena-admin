@@ -10,19 +10,22 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { StorageContainer } from '../../models/StorageContainer';
+import { ConferenceTicket } from '../../models/ConferenceTicket';
 import { SocketConnection } from '../../sockets/socket.connections';
+import { ConferenceRegistration } from '../../models/ConferenceRegistration';
+import { ConferenceRelease } from '../../models/ConferenceRelease';
+import { ConferenceAttendee } from '../../models/ConferenceAttendee';
 
 
 /**
- * Api services for the `StorageContainer` model.
+ * Api services for the `ConferenceTicket` model.
  *
  * **Details**
  *
- * Storage: Manage Containers in a Domain
+ * Conference: Manage Tickets in a Domain
  */
 @Injectable()
-export class StorageContainerApi extends BaseLoopBackApi {
+export class ConferenceTicketApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -36,23 +39,113 @@ export class StorageContainerApi extends BaseLoopBackApi {
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+   * Fetches belongsTo relation registration.
    *
-   * @returns {object[]} An empty reference that will be
+   * @param {any} id ConferenceTicket id
+   *
+   * @param {boolean} refresh 
+   *
+   * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageContainer` object.)
+   * This usually means the response is a `ConferenceTicket` object.)
    * </em>
    */
-  public getContainers(customHeaders?: Function): Observable<any> {
+  public getRegistration(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers";
+    "/ConferenceTickets/:id/registration";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Fetches belongsTo relation release.
+   *
+   * @param {any} id ConferenceTicket id
+   *
+   * @param {boolean} refresh 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceTicket` object.)
+   * </em>
+   */
+  public getRelease(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ConferenceTickets/:id/release";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Fetches belongsTo relation attendee.
+   *
+   * @param {any} id ConferenceTicket id
+   *
+   * @param {boolean} refresh 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceTicket` object.)
+   * </em>
+   */
+  public getAttendee(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ConferenceTickets/:id/attendee";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceTicket` object.)
+   * </em>
+   */
+  public sync(customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ConferenceTickets/sync";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -65,9 +158,7 @@ export class StorageContainerApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
+   * @param {any} id ConferenceTicket id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -75,72 +166,15 @@ export class StorageContainerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageContainer` object.)
+   * This usually means the response is a `ConferenceTicket` object.)
    * </em>
    */
-  public createContainer(options: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers";
-    let _routeParams: any = {};
-    let _postBody: any = {
-      options: options
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {string} container 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `` – `{}` - 
-   */
-  public destroyContainer(container: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers/:container";
-    let _routeParams: any = {
-      container: container
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {string} container 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageContainer` object.)
-   * </em>
-   */
-  public getContainer(container: any = {}, customHeaders?: Function): Observable<any> {
+  public extract(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers/:container";
+    "/ConferenceTickets/:id/extract";
     let _routeParams: any = {
-      container: container
+      id: id
     };
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -152,39 +186,6 @@ export class StorageContainerApi extends BaseLoopBackApi {
    * <em>
          * (The remote method definition does not provide any description.)
          * </em>
-   *
-   * @param {string} container 
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageContainer` object.)
-   * </em>
-   */
-  public getFiles(container: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers/:container/files";
-    let _routeParams: any = {
-      container: container
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {string} container 
-   *
-   * @param {string} file 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -192,82 +193,16 @@ export class StorageContainerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageContainer` object.)
+   * This usually means the response is a `ConferenceTicket` object.)
    * </em>
    */
-  public getFile(container: any = {}, file: any = {}, customHeaders?: Function): Observable<any> {
+  public extractAll(customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers/:container/files/:file";
-    let _routeParams: any = {
-      container: container,
-      file: file
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {string} container 
-   *
-   * @param {string} file 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `` – `{}` - 
-   */
-  public removeFile(container: any = {}, file: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers/:container/files/:file";
-    let _routeParams: any = {
-      container: container,
-      file: file
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {object} data Request data.
-   *
-   *  - `req` – `{object}` - 
-   *
-   *  - `res` – `{object}` - 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `result` – `{object}` - 
-   */
-  public upload(req: any = {}, res: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers/:container/upload";
+    "/ConferenceTickets/extractAll";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof req !== 'undefined' && req !== null) _urlParams.req = req;
-    if (typeof res !== 'undefined' && res !== null) _urlParams.res = res;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -277,41 +212,67 @@ export class StorageContainerApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {string} container 
+   * @param {any} id ConferenceTicket id
    *
-   * @param {string} file 
-   *
-   * @param {object} req 
-   *
-   * @param {object} res 
+   * @param {string} confirm 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
-   * This method returns no data.
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceTicket` object.)
+   * </em>
    */
-  public download(container: any = {}, file: any = {}, req: any = {}, res: any = {}, customHeaders?: Function): Observable<any> {
+  public claim(id: any, confirm: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageContainers/:container/download/:file";
+    "/ConferenceTickets/:id/claim";
     let _routeParams: any = {
-      container: container,
-      file: file
+      id: id
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof req !== 'undefined' && req !== null) _urlParams.req = req;
-    if (typeof res !== 'undefined' && res !== null) _urlParams.res = res;
+    if (typeof confirm !== 'undefined' && confirm !== null) _urlParams.confirm = confirm;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {any} id ConferenceTicket id
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ConferenceTicket` object.)
+   * </em>
+   */
+  public unclaim(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ConferenceTickets/:id/unclaim";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `StorageContainer`.
+   * i.e. `ConferenceTicket`.
    */
   public getModelName() {
-    return "StorageContainer";
+    return "ConferenceTicket";
   }
 }
