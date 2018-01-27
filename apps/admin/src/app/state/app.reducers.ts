@@ -7,6 +7,7 @@ export interface State {
   domains: any[]
   settings: any
   contentDashboard: any[]
+  conferenceDashboard: any[]
   systemDashboard: any[]
   modules: any
 }
@@ -17,6 +18,7 @@ export const State: State = {
   domains: [],
   settings: {},
   contentDashboard: [],
+  conferenceDashboard: [],
   systemDashboard: [],
   modules: {},
 }
@@ -50,6 +52,11 @@ export function reducer(state = State, action: UnsafeAction): State {
     case 'APP_CONTENT_DASHBOARD':
       return Object.assign({}, state, {
         contentDashboard: sortBy([...state.contentDashboard, action.payload], ['weight']),
+      })
+
+    case 'APP_CONFERENCE_DASHBOARD':
+      return Object.assign({}, state, {
+        conferenceDashboard: sortBy([...state.conferenceDashboard, action.payload], ['weight']),
       })
 
     case 'APP_SYSTEM_DASHBOARD':

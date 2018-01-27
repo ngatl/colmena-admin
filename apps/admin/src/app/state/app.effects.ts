@@ -22,6 +22,11 @@ export class AppEffects {
         this.store.dispatch({ type: 'APP_CONTENT_DASHBOARD', payload })
       )
     }
+    if (moduleConfig.dashboardLinks.conference) {
+      moduleConfig.dashboardLinks.conference.forEach(payload =>
+        this.store.dispatch({ type: 'APP_CONFERENCE_DASHBOARD', payload })
+      )
+    }
     if (moduleConfig.dashboardLinks.system) {
       moduleConfig.dashboardLinks.system.forEach(payload =>
         this.store.dispatch({ type: 'APP_SYSTEM_DASHBOARD', payload })

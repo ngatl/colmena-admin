@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   api: {
-    baseUrl: 'https://colmena.now.sh',
+    baseUrl: 'http://ngatl.beeman.nl',
     version: 'api/v1',
   },
 }

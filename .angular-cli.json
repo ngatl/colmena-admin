@@ -48,9 +48,15 @@
       "appRoot": ""
     },
     {
+      "name": "../extensions/admin-conference",
+      "root": "extensions/admin-conference/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "../modules/admin/dev",
       "root": "libs/../modules/admin/dev/src",
-      "test": "../../../../../../test.js",
+      "test": "../../../test.js",
       "appRoot": ""
     },
     {
