@@ -4,21 +4,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   selector: 'app-conference-sponsor',
   template: `
     <div class="card card-inverse">
-      <div class="card-block">
-        <h4 class="card-title">
+      <div class="card-header">
+        <h2>
           <a href="" [routerLink]="[item.id]" class="btn btn-lg btn-link">
             {{item.name}}
-          </a>
-        </h4>
-        <p class="card-text">{{item.description}}</p>
-        <p class="card-text">{{item.level}}</p>
-        <div class="delete-button">
-          <button class="btn btn-danger" (click)="action.emit({ type: 'delete', payload: item })">
-            <i class="icon-trash"></i>
-          </button>
-        </div>
+          </a>  
+        </h2>
       </div>
-    </div>
+      <div class="card-body">
+        <img class="card-img img-fluid" [attr.src]="item.imageUrl" [attr.alt]="item.name">
+      </div>
+     </div>
   `,
   styles: [`
     .card:hover {
@@ -26,6 +22,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
     }
     .card-img-overlay {
       padding: 0;
+    }
+    .card-img {
+      width: 100%;
     }
     .delete-button {
       display: none;

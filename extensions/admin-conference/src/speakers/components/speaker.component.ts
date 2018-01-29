@@ -11,13 +11,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
             {{item.name}}
           </a>
         </h4>
-        <p class="card-text">{{item.description}}</p>
-        <p class="card-text"></p>
-        <div class="delete-button">
-          <button class="btn btn-danger" (click)="action.emit({ type: 'delete', payload: item })">
-            <i class="icon-trash"></i>
-          </button>
-        </div>
       </div>
     </div>
   `,

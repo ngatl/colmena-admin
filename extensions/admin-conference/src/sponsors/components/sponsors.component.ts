@@ -6,13 +6,6 @@ import { SponsorsService } from '../sponsors.service'
 @Component({
   selector: 'app-conference-sponsors',
   template: `
-    <div>
-      <h1>
-        <a href="" [routerLink]="['add']" class="btn btn-lg btn-success">
-          <i class="icon-plus"></i>  Add Sponsor
-        </a>
-      </h1>
-    </div>
     <div class="row">
       <app-conference-sponsor class="col-md-4" *ngFor="let item of items" [item]="item" (action)="handleAction($event)">
       </app-conference-sponsor>
