@@ -6,7 +6,6 @@ import { TicketsService } from './tickets.service'
 import { TicketsRoutingModule } from './tickets-routing.module'
 
 import { TicketComponent } from './components/ticket.component'
-import { TicketFormComponent } from './components/ticket-form.component'
 import { TicketsIndexComponent } from './components/tickets-index.component'
 import { TicketsComponent } from './components/tickets.component'
 
@@ -17,7 +16,6 @@ import { TicketsComponent } from './components/tickets.component'
   ],
   declarations: [
     TicketComponent,
-    TicketFormComponent,
     TicketsIndexComponent,
     TicketsComponent,
   ],

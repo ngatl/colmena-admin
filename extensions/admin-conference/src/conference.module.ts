@@ -9,6 +9,7 @@ import { ConferenceDashboardComponent } from './conference.component'
     AppSharedModule,
     DashboardRoutingModule,
   ],
-  declarations: [ConferenceDashboardComponent]
+  declarations: [ConferenceDashboardComponent],
+  exports: [ConferenceDashboardComponent],
 })
 export class ConferenceModule { }

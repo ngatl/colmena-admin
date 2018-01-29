@@ -26,6 +26,7 @@
                 *ngFor="let button of config?.buttons"
                 class="{{button.classNames}}" (click)="action.emit({ action: button.action })">
           <i class='{{button.icon}}'></i>
+          {{button.label}}
         </button>
       </div>
     </span>

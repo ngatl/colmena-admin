@@ -1,52 +1,55 @@
+import { AttendeesService } from './../attendees.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-conference-attendee',
   template: `
     <div class="card card-inverse">
-      <img class="card-img img-fluid" [attr.src]="item.imageUrl" [attr.alt]="item.name">
-      <div class="card-img-overlay">
-        <h4 class="card-title">
-          <a href="" [routerLink]="[item.id]" class="btn btn-lg btn-link">
-            {{item.name}}
-          </a>
-        </h4>
-        <p class="card-text">{{item.description}}</p>
-        <p class="card-text"></p>
-        <div class="delete-button">
-          <button class="btn btn-danger" (click)="action.emit({ type: 'delete', payload: item })">
-            <i class="icon-trash"></i>
-          </button>
+      <div class="card-header">
+        <div class="media">
+          <img class="avatar mr-3 rounded" [attr.src]="item?.avatar">
+          <div class="media-body">
+            <h4 class="my-0">
+              <a [routerLink]="item?.id"> {{item?.name}} </a> <br />
+              <span class="text-muted">
+                {{ item?.email }}
+              </span>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        
+
+        <h2 class="card-title">Number of notes: {{item?.notes?.length}}</h2>
+
+        <h2 class="card-title">Tickets</h2>
+
+        <div class="card" *ngFor="let ticket of item.tickets">
+          <table class="table table-striped">
+            <tr>
+              <th>Title</th>
+              <td>{{ticket?.release?.title}}</td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>{{ticket?.release?.description}}</td>
+            </tr>
+            <tr>
+              <th>ti.to link</th>
+              <td>
+                <a href="https://ti.to/tickets/{{ticket?.id}}" target="_blank">{{ticket?.id}}</a>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
   `,
   styles: [`
-    .card:hover {
-      box-shadow: 0 0 10px #333;
-    }
-    .card-img-overlay {
-      padding: 0;
-    }
-    .card-title {
-      background: rgba(0,0,0,0.3);
-      padding: 20px 10px;
-    }
-    .card-title a {
-      color: white;
-    }
-    .card-text,
-    .card-title {
-      text-shadow: 0 0 2px #333;
-    }
-    .delete-button {
-      display: none;
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-    }
-    .card:hover .delete-button {
-      display: block;
+    .avatar {
+      width: 50px;
     }
   `]
 })
@@ -55,4 +58,15 @@ export class AttendeeComponent {
   @Input() item: any = {}
   @Output() action = new EventEmitter()
 
+  constructor(
+    public service: AttendeesService,
+    private route: ActivatedRoute,
+  ) {
+    this.route.params
+    .map(res => res.id)
+    .subscribe(id => {
+      this.service.getItem(id)
+        .subscribe(item => this.item = item)
+    })
+  }
 }

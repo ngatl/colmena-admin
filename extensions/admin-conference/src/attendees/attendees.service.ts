@@ -1,54 +1,52 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { ConferenceAttendee, ConferenceAttendeeApi } from '../../../../packages/admin-lb-sdk/src'
-import { FormService } from '../../../../packages/admin-ui/src'
+import { UiDataGridService } from '../../../../packages/admin-ui'
 
 export { ConferenceAttendee } from '../../../../packages/admin-lb-sdk/src'
 
-const icon = 'icon-microphone'
-
 @Injectable()
-export class AttendeesService {
+export class AttendeesService extends UiDataGridService {
 
-  constructor(
-    private conferenceAttendeeApi: ConferenceAttendeeApi,
-    private formService: FormService,
-  ) { }
+  public icon = 'fa fa-ticket'
+  public title = 'Tickets'
+  public files: any[] = []
 
-  findAttendee(id): Observable<ConferenceAttendee> {
-    return this.conferenceAttendeeApi.findById(id)
+  public tableColumns = [
+    { field: 'id', label: 'ID', action: 'view' },
+    { field: 'name', label: 'Name', action: 'view' },
+    { field: 'email', label: 'Email', action: 'view' },
+  ]
+
+  constructor(private api: ConferenceAttendeeApi) {
+    super()
+    this.columns = this.tableColumns
   }
 
-  findAttendees(): Observable<ConferenceAttendee[]> {
-    return this.conferenceAttendeeApi.find()
+  getItems(): Observable<ConferenceAttendee[]> {
+    return this.api.find(this.getFilters())
   }
 
-  upsertAttendee(item): Observable<ConferenceAttendee> {
-    if (item.id) {
-      return this.conferenceAttendeeApi.upsert(item)
+  getItem(id): Observable<ConferenceAttendee> {
+    const filters = {
+      include: [{
+        relation: 'notes',
+        scope: {
+          include: 'peer',
+        }
+      }, {
+        relation: 'tickets',
+        scope: {
+          include: 'release',
+        }
+      }],
     }
-    return this.conferenceAttendeeApi.create(item)
+
+    return this.api.findById(id, filters)
   }
 
-  deleteAttendee(itemId): Observable<any> {
-    return this.conferenceAttendeeApi.deleteById(itemId)
-  }
-
-  getAttendeeFields() {
-    return {
-      icon: icon,
-      fields: [
-        this.formService.input('name', { label: 'Name', placeholder: 'Name' }),
-        this.formService.textarea('description', { label: 'Description', placeholder: 'Description' }),
-        this.formService.input('imageUrl', { label: 'Image Url', placeholder: 'Image Url' }),
-        this.formService.input('website', { label: 'website', placeholder: 'website' }),
-        this.formService.input('twitter', { label: 'Twitter', placeholder: 'Twitter' }),
-        this.formService.input('github', { label: 'GitHub', placeholder: 'GitHub' }),
-        this.formService.input('stackoverflow', { label: 'StackOverflow', placeholder: 'StackOverflow' }),
-        this.formService.input('linkedin', { label: 'LinkedIn', placeholder: 'LinkedIn' }),
-        this.formService.input('medium', { label: 'Medium', placeholder: 'Medium' }),
-      ]
-    }
+  getItemCount(): Observable<any> {
+    return this.api.count(this.getWhereFilters())
   }
 
 }

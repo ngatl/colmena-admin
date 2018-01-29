@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router'
 
 import { TicketsComponent } from './components/tickets.component'
 import { TicketsIndexComponent } from './components/tickets-index.component'
-import { TicketFormComponent } from './components/ticket-form.component'
 
 export const routes: Routes = [ {
   path: '',
@@ -13,8 +12,6 @@ export const routes: Routes = [ {
   component: TicketsIndexComponent,
   children: [
     { path: '', component: TicketsComponent, data: { title: 'Tickets' } },
-    { path: 'add', component: TicketFormComponent, data: { title: 'Add' } },
-    { path: ':id', component: TicketFormComponent, data: { title: 'Edit' } },
   ],
 } ]
 @NgModule({
