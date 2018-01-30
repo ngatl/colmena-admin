@@ -7,24 +7,34 @@ import { ConferenceSponsor, SponsorsService } from '../sponsors.service'
 @Component({
   selector: 'app-conference-sponsor-form',
   template: `
-    {{item}}
+    <div class="row">
+      <div class="col-md-6">
+        <ui-form *ngIf="item" [config]="formConfig" [item]="item" (action)="handleAction($event)"></ui-form>
+      </div>
+      <div class="col-md-6" *ngIf="item">
+        <app-conference-sponsor [item]="item"></app-conference-sponsor>
+      </div>
+    </div>
   `,
 })
 export class SponsorFormComponent {
 
   config: any
   itemId: string
-  item: ConferenceSponsor
+  item: ConferenceSponsor = new ConferenceSponsor()
+  public formConfig: any = {}
 
-  constructor(private conferenceService: SponsorsService,
+
+  constructor(private service: SponsorsService,
               private uiService: UiService,
               private route: ActivatedRoute,
               private router: Router,) {
-    this.config = this.conferenceService.getSponsorFields()
+    this.config = this.service.getSponsorFields()
     this.itemId = this.route.snapshot.params['id']
+    this.formConfig = this.service.getFormConfig()
 
     if (this.itemId) {
-      this.conferenceService.findSponsor(this.itemId)
+      this.service.findSponsor(this.itemId)
         .subscribe((res: ConferenceSponsor) => {
           this.item = res
         })
@@ -35,14 +45,17 @@ export class SponsorFormComponent {
 
 
   private handleAction(action) {
-    switch (action.type) {
+    switch (action['action']) {
       case 'save':
-        return this.conferenceService
-          .upsertSponsor(Object.assign({}, action.payload, {id: this.itemId}))
+        return this.service
+          .upsertSponsor(Object.assign({}, action.item, {id: this.itemId}))
           .subscribe(() => {
             this.uiService.alerts.notifySuccess({ title: 'Sponsor saved', body: '' })
-            this.handleAction({type: 'cancel'})
-          }, (err) => this.uiService.alerts.notifyError({ title: 'Error deleting item', body: err.message }))
+            this.handleAction({action: 'cancel'})
+          }, (err) => {
+            console.log(err)
+            this.uiService.alerts.notifyError({ title: 'Error saving item', body: err.message })
+          })
       case 'cancel':
         return this.router.navigate(['/conference/sponsors/'])
       default:

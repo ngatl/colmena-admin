@@ -49,4 +49,30 @@ export class SponsorsService {
     }
   }
 
+
+  getFormFields() {
+    return [
+      this.formService.input('id', {
+        label: 'ID',
+        placeholder: 'ID',
+      }),
+      this.formService.input('name', {
+        label: 'Name',
+        placeholder: 'Name',
+      }),
+      this.formService.input('imageUrl', {
+        label: 'Image Url',
+        placeholder: 'Image Url',
+      }),
+    ]
+  }
+
+  getFormConfig() {
+    return {
+      icon: 'icon-diamond',
+      fields: this.getFormFields(),
+      showCancel: true,
+      hasHeader: false,
+    }
+  }
 }
