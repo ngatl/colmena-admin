@@ -23,6 +23,10 @@ export class AttendeesService extends UiDataGridService {
     this.columns = this.tableColumns
   }
 
+  getStats() {
+    return this.api.notesStats()
+  }
+
   getItems(): Observable<ConferenceAttendee[]> {
     return this.api.find(this.getFilters())
   }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router/';
 @Component({
   selector: 'app-conference-attendees',
   template: `
-    <ui-data-grid #grid (action)="action($event)" [service]="service"></ui-data-grid>
+    <ui-data-grid #grid (action)="action($event)" [config]="config" [service]="service"></ui-data-grid>
   `,
 })
 export class AttendeesComponent {
@@ -19,8 +19,21 @@ export class AttendeesComponent {
     private router: Router,
   ) {}
 
+  public config = {
+    header: {
+      buttons: [
+        { action: 'add', icon: 'icon-plus', classNames: 'btn btn-outline-success' },
+        { action: 'top', icon: 'fa fa-arrow-up', classNames: 'btn btn-outline-primary', label: 'Notes Stats' },
+      ],
+    }
+  }
+
+
   action(event) {
     switch (event.action) {
+      case 'top':
+        this.router.navigate(['/conference/attendees/top' ])
+        break;
       case 'edit':
       case 'view':
         this.router.navigate(['/conference/attendees/', event.item.id])
